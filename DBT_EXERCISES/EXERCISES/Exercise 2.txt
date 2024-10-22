@@ -1,0 +1,88 @@
+SQL Exercise 2
+1. Display the Supplier table in the descending order of CITY.
+Query:
+select * from s
+order by city desc;
++------+--------+--------+--------+
+| SNO  | SNAME  | STATUS | CITY   |
++------+--------+--------+--------+
+| S2   | Siddh  |     10 | Paris  |
+| S5   | Virat  |     40 | paris  |
+| S1   | Rahul  |     20 | London |
+| S4   | Dinesh |     30 | London |
+| S3   | Rohit  |     15 | Athens |
++------+--------+--------+--------+
+
+2. Display the Part Table in the ascending order of CITY and within the city in the ascending order of Part names.
+Query:
+select * from p
+order by city;
++------+-------+-------+--------+--------+
+| pno  | pname | color | weight | CITY   |
++------+-------+-------+--------+--------+
+| P3   | Screw | Blue  |     17 | Athens |
+| P5   | Log   | Blue  |     18 | Athens |
+| P1   | NUT   | red   |     12 | London |
+| P4   | Corn  | red   |     20 | London |
+| P2   | BOLT  | green |     17 | paris  |
++------+-------+-------+--------+--------+
+
+3. Display all the Suppliers with a status between 10 and 20.
+
+select * from s
+where status between 10 and 20;
+
++------+-------+--------+--------+
+| SNO  | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Rahul |     20 | London |
+| S2   | Siddh |     10 | Paris  |
+| S3   | Rohit |     15 | Athens |
++------+-------+--------+--------+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+select pname,weight from p
+where not weight between 10 and 15;
+
++-------+--------+
+| pname | weight |
++-------+--------+
+| BOLT  |     17 |
+| Screw |     17 |
+| Corn  |     20 |
+| Log   |     18 |
++-------+--------+
+
+
+5. Display all the Part names starting with the letter ‘S’.
+
+Query:
+select pname from p
+where pname like 's%';
+
++-------+
+| pname |
++-------+
+| Screw |
++-------+
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+select sname, city from s
+where city like 'L%';
+
++--------+--------+
+| sname  | city   |
++--------+--------+
+| Rahul  | London |
+| Dinesh | London |
++--------+--------+
+
+7. Display all the Projects, with the third letter in JNAME as ‘n
+
+select jname from j
+where jname like '__n%';
+
++-------+
+| jname |
++-------+
+| Punch |
++-------+

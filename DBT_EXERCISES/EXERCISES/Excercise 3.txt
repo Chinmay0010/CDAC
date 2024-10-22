@@ -1,0 +1,152 @@
+SQL Exercise 3
+
+1. Display all the Supplier names with the initial letter capital.
+Query:
+Select    CONCAT(UPPER(SUBSTRING(sname,1,1)),LOWER(SUBSTRING(sname,2))) AS sname from s;
++--------+
+| sname  |
++--------+
+| Rahul  |
+| Siddh  |
+| Dinesh |
+| Rohit  |
+| Virat  |
++--------+
+5 rows in set (0.01 sec)
+
+2. Display all the Supplier names in upper case.
+Query:
+Select UPPER (sname) AS sname from s;
+
++--------+
+| sname  |
++--------+
+| RAHUL  |
+| SIDDH  |
+| DINESH |
+| ROHIT  |
+| VIRAT  |
++--------+
+5 rows in set (0.00 sec)
+
+3. Display all the Supplier names in lower case.
+
+Query:
+Select LOWER (sname) AS sname from s;
+
++--------+
+| sname  |
++--------+
+| rahul  |
+| siddh  |
+| dinesh |
+| rohit  |
+| virat  |
++--------+
+5 rows in set (0.00 sec)
+
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+
+Query:
+select lpad(sname,25,' ') AS LeftsName from s;
++---------------------------+
+| LeftsName                 |
++---------------------------+
+|                     Rahul |
+|                     Siddh |
+|                    Dinesh |
+|                     Rohit |
+|                     Virat |
++---------------------------+
+5 rows in set (0.00 sec)
+
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).
+HINT: REPLACE.
+Query:
+select replace(sname,'la','ro') from s;
++--------------------------+
+| replace(sname,'la','ro') |
++--------------------------+
+| Rahul                    |
+| Siddh                    |
+| Dinesh                   |
+| Rohit                    |
+| Virat                    |
++--------------------------+
+5 rows in set (0.01 sec)
+
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced with ‘o’.
+Query:
+select replace(replace(sname,'l','r'),'a','o') from s;
++-----------------------------------------+
+| replace(replace(sname,'l','r'),'a','o') |
++-----------------------------------------+
+| Rohur                                   |
+| Siddh                                   |
+| Dinesh                                  |
+| Rohit                                   |
+| Virot                                   |
++-----------------------------------------+
+5 rows in set (0.00 sec)
+
+7. Display the Supplier names and the lengths of the names.
+Query:
+select LENGTH(sname) as length from S;
++--------+
+| length |
++--------+
+|      5 |
+|      5 |
+|      6 |
+|      5 |
+|      5 |
++--------+
+5 rows in set (0.00 sec)
+
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.
+Query:
+select soundex ('Bloke') from s;
++-------------------+
+| soundex ('Bloke') |
++-------------------+
+| B420              |
+| B420              |
+| B420              |
+| B420              |
+| B420              |
++-------------------+
+5 rows in set (0.00 sec)
+
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).
+
+select
+case
+when status=10 then 'TEN'
+when status=20 then 'Twenty'
+when status=30 then 'Thirty'
+when status=40 then 'fourty'
+when status=50 then 'Fifty'
+end 'not number'
+from s;
++------------+
+| not number |
++------------+
+| Twenty     |
+| TEN        |
+| Thirty     |
+| NULL       |
+| fourty     |
++------------+
+5 rows in set (0.00 sec)
+
+
+10. Display the current day (e.g. Thursday).
+QUERY:
+
+SELECT DAYNAME(CURDATE());
++--------------------+
+| DAYNAME(CURDATE()) |
++--------------------+
+| Tuesday            |
++--------------------+
+1 row in set (0.00 sec)

@@ -1,0 +1,143 @@
+SQL Exercise 4  
+ 
+1. Display the minimum Status in the Supplier table. 
+Query:select min(status) AS minsatus from s;
++----------+
+| minsatus |
++----------+
+|       10 |
++----------+
+1 row in set (0.01 sec)
+
+2. Display the maximum Weight in the Parts table.
+
+Query:
+select max(weight) as maxweight from p;
++-----------+
+| maxweight |
++-----------+
+|        20 |
++-----------+
+1 row in set (0.00 sec)
+   
+3. Display the average Weight of the Parts. 
+
+Query: select AVG(Weight) as avgweight from p;
+
++-----------+
+| avgweight |
++-----------+
+|      16.8 |
++-----------+
+4. Display the total Quantity sold for part ‘P1’. 
+Query:
+select sum(qty) as totalQtySold from spj where pno = 'p1';
+
++--------------+
+| totalQtySold |
++--------------+
+|           30 |
++--------------+
+  
+5. Display the total Quantity sold for each part.
+
+Query:
++------+--------------+
+| pno  | totalqtysold |
++------+--------------+
+| P1   |           30 |
+| P3   |           40 |
+| P2   |           50 |
+| P5   |           60 |
++------+--------------+
+4 rows in set (0.00 sec)
+
+6. Display the average Quantity sold for each part.  
+Query:
+select pno, sum(qty) as totalqtysold from spj; 
+
++------+------------+
+| pno  | avgqtysold |
++------+------------+
+| P1   |    15.0000 |
+| P3   |    40.0000 |
+| P2   |    50.0000 |
+| P5   |    60.0000 |
++------+------------+
+
+7. Display the maximum Quantity sold for each part, provided the maximum Quantity 
+is greater than 800.   
+
+Query:
+select pno, max(qty) as maxqtysold from spj group by pno having max(qty) > 800;
+output:Empty set (0.01 sec)
+explanation: i didn't choose those values in qty table;
+
+8. Display the Status and the count of Suppliers with that Status.  
+Query:
+ select status, count(*) as supplierCount from s group by status;
++--------+---------------+
+| status | supplierCount |
++--------+---------------+
+|     20 |             1 |
+|     10 |             1 |
+|     30 |             1 |
+|     15 |             1 |
+|     40 |             1 |
++--------+---------------+
+5 rows in set (0.01 sec)
+ 
+9. Display the count of Projects going on in different cities.
+Query: select city, count(*) as projectcount from p group by city;
++--------+--------------+
+| city   | projectcount |
++--------+--------------+
+| London |            2 |
+| paris  |            1 |
+| Athens |            2 |
++--------+--------------+
+   
+10. What is the difference between COUNT(Status) and COUNT(*) ?   
+count(status) only counts non-NULL values in the Status column.
+
+count(*) counts all rows, regardless of whether they have NULL values in the columns or not.
+
+Query: SELECT COUNT(Status) AS CountStatus, COUNT(*) AS CountAll FROM s;
+
++-------------+----------+
+| CountStatus | CountAll |
++-------------+----------+
+|           5 |        5 |
++-------------+----------+
+1 row in set (0.00 sec)
+
+
+11. Display the Status and the Count of Suppliers with that Status in the following format 
+as shown below:-   
+Status   
+Ten   
+Count   
+1   
+Twenty   2   
+Thirty   
+3  
+
+Query: 
+SELECT
+    CASE
+        WHEN Status = 10 THEN 'Ten'
+        WHEN Status = 20 THEN 'Twenty'
+        WHEN Status = 30 THEN 'Thirty'
+        ELSE 'Other'
+    END AS Status,
+    COUNT(*) AS Count FROM s GROUP BY Status;
+
++--------+-------+
+| Status | Count |
++--------+-------+
+| Twenty |     1 |
+| Ten    |     1 |
+| Thirty |     1 |
+| Other  |     1 |
+| Other  |     1 |
++--------+-------+
