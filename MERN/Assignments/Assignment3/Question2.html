@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+*{
+	font-family: "Arial";
+	/*box-sizing:border-box;*/
+	margin:0;
+	padding:0;
+}
+
+.Container{
+        display: flex;
+		width:100%;
+		background-color: rgba(255,255,255,0.2);
+		backdrop-filter:blur(5px);
+		/* border-radius:15px; */
+		/* padding:20px; */
+		box-shadow: 0 0 20px rgba(0,0,0,0.5);
+		/* max-width:500px;
+		margin:auto;
+		margin-top:30px; */
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: solid 2px;
+		
+		
+}
+
+label{
+	font-size:15px;
+	font-weight:20px;
+	font-style: italic;
+	text-align: center;
+
+}
+
+body{
+
+    background-color: #09878b;
+    background-size: cover;
+    height: 100vh;
+
+}
+
+button{
+    background-color: red;
+    color: white;
+    align-items: center;
+}
+p{
+    color: white;
+    align-items: center;
+}
+
+#fname{
+	
+	text-align: center;
+}
+
+#lname{
+	
+	text-align: center;
+}
+
+#eid{
+	
+	text-align: center;
+}
+
+#cno{
+	
+	text-align: center;
+}
+
+label{
+    font-size:20px;
+	font-weight:20px;
+	font-style: italic;
+	text-align: center;
+}
+
+input{
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+
+</style>
+
+<body> 
+<form>
+
+    <div class="Container">
+        <div>
+
+        <label>First Name:</label>
+        <input type = "text" id="fname" placeholder="Enter First Name">
+        
+        <label>Last Name:</label>
+        <input type = "text" id="lname" placeholder="Enter Last Name">
+        
+        <label>Email ID: </label> 
+        <input type = "text" id ="eid" placeholder="example@gmail.com">
+
+        <label>Contact no: </label>
+        <input type = "text" id ="cno" placeholder="Enter Contact No">
+
+        <button type = "btn" onclick ="myfunction()">Submit</button>
+        <p id="printarea"></p>
+
+        </div>
+        <div id="detailsSubmitted"></div>
+    </div>
+</form>
+
+<script>
+
+function myfunction(){
+    event.preventDefault();
+    var fname=document.getElementById("fname").value;
+    var lname=document.getElementById("lname").value;
+    var eid=document.getElementById("eid").value;
+    var cno=document.getElementById("cno").value;
+
+    const ds = document.getElementById("detailsSubmitted");
+
+    ds.innerHTML = `Submitted Details<br> ${fname} <br> ${lname} <br> ${eid} <br> ${cno}  `;
+}
+
+</script>
+
+</body>
+</html>

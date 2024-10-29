@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-size: 25px;
+  background-color: #121212;
+}
+input {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  display: inline-block;
+  margin: 15px 5px;
+  text-decoration: underline;
+  color: blue;
+}
+p {
+  display: inline-block;
+  width: 50%;
+  padding: 10px;
+  color: white;
+}
+b {
+  color: #121212;
+}
+.green {
+  color: green;
+}
+
+</style>
+<body>
+    <input
+      id="inpButton"
+      type="button"
+      onmouseover="highlight()"
+      value="[On mouse over here bold words of the following paragraph will be highlighted]"
+    />
+    <br />
+    <p>
+      <b>We</b> have just started <b>this</b> section for the users (
+      <b>beginner</b> to intermediate ) who want to work with
+      <b>various</b> JavaScript <b>problems</b> and write scripts online to
+      <b>test</b> their JavaScript <b>skill</b>.
+    </p>
+  </body>
+  <script>
+    function highlight() {
+      const elemets = document.querySelectorAll("b");
+      elements.forEach((elemet) => {
+        element.classList.toggle("green");
+      });
+    }
+  </script>
+</html>

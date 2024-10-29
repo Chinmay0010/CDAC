@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form>
+        <label>Select Fruits:</label>
+        <select id = "selectNow">
+            <option value ="apple" id="fruit"> Apple </option>
+            <option value="banana" id="fruit"> Banana </option>
+            <option value="orange" id="fruit"> Orange </option>
+            <option value ="cherry"id="fruit"> Cherry </option>
+        </select>
+        <button type ="btn"  id ="btn"> Click to remove</button>
+    </form>
+    
+</body>
+
+<script>
+    document.getElementById("btn").onclick=function(){myfunction()};
+    function myfunction(){
+        event.preventDefault();
+        const ele =document.getElementById("selectNow");
+        // ele.myfunction();
+        ele.remove(ele.selectedIndex); 
+    }
+
+</script>
+</html>
